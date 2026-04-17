@@ -1,0 +1,71 @@
+<template>
+    <div class="main-container">
+        <template if:true={isLaunchMode}>
+    <div class="launch-page slds-text-align_center animate-fade-in">
+        <div class="hero-container">
+        </div>
+        
+        <h1 class="quiz-headline">Which Salesforce Character Are You?</h1>
+        <p class="body-text">Take our quiz to find out.</p>
+        <button class="quiz-button primary-pop slds-m-top_large" onclick={startQuiz}>Start Quiz</button>
+        <img src={sfLogo} alt="Salesforce Logo" class="brand-logo-footer">
+    </div>
+</template>
+
+<template if:true={isQuizMode}>
+    <div class="quiz-view animate-fade-in">
+        <p class="slds-text-title_caps">Question {currentStep} of {questions.length}</p>
+        
+        <h2 class="quiz-headline sub-headline">{activeQuestion.label}</h2>
+        <div class="options-grid">
+            <template for:each={activeQuestion.options} for:item="opt">
+                <button key={opt.value} 
+                        class="quiz-button option-btn" 
+                        data-value={opt.value} 
+                        onclick={handleAnswer}>
+                    {opt.text}
+                </button>
+            </template>
+        </div>
+
+        <div class="slds-m-top_medium">
+            <button class="nav-btn-back" onclick={handleBack}>
+                Go Back
+            </button>
+        </div>
+    </div>
+</template>
+
+<template if:true={isResultMode}>
+    <div class="result-page-wrapper animate-fade-in">
+        
+        <div class="animate-gradient result-card">
+            <img src={sfLogo} alt="Salesforce Logo" class="brand-logo-footer">
+
+            <div class="result-layout-grid">
+                <div class="character-display">
+                    <h1 class="result-header">{resultCharacter}!</h1>
+                    <img src={resultImage} alt={resultCharacter} class="character-img-break">
+                </div>
+
+                <div class="info-display">
+                    <p class="result-body">{resultDescription}</p>
+                    
+                    <div class="cta-section">
+                        <p class="cta-text">Want to learn more about Salesforce? Scan for free, fun, hands-on training!</p>
+                        <div class="qr-wrapper">
+                            <img src="https://storm-b3bbc78c90f3d4.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Png&versionId=068Hr00000fvHzj&operationContext=DELIVERY&contentId=05THr00002XFdA3&page=0&d=/a/Hr000000FCuJ/Dun1KaRDzKZxVz9L2jjg1lLH65Ta3vxWMHardyx7e90&oid=00DHr00000IHyg9&dpt=null&viewId=" 
+                                 alt="Scan to learn more" class="qr-code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="quiz-button reset-btn slds-m-top_large" onclick={resetQuiz}>
+                Take Quiz Again
+            </button>
+        </div>
+    </div>
+</template>
+    </div>
+    </template>

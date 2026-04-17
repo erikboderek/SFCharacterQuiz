@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+  <types>
+    <members>quizApp</members>
+    <name>AuraDefinitionBundle</name>
+  </types>
+  <types>
+    <members>home--sfdc_cms__view</members>
+    <name>DigitalExperience</name>
+  </types>
+  <types>
+    <members>characterQuiz</members>
+    <name>LightningComponentBundle</name>
+  </types>
+  <types>
+    <members>Appy</members>
+    <members>Astro</members>
+    <members>Cloudy</members>
+    <members>Codey</members>
+    <members>Max</members>
+    <members>SFLogo</members>
+    <name>StaticResource</name>
+  </types>
+  <version>63.0</version>
+</Package>

@@ -1,0 +1,358 @@
+/* 1. DEFINE FONTS */
+@font-face {
+    font-family: 'AvantGardeDemi';
+    src: url('/resource/AvantGardeDemi') format('woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'SalesforceSans';
+    src: url('/resource/SFSansRegular') format('woff2');
+}
+
+/* 2. COMPONENT CONTAINER */
+:host {
+    display: block;
+    /* Morning Gradient: Cloud Blue 80 to 95 [cite: 1092, 1096, 1106] */
+    background: linear-gradient(180deg, #90D0FE 0%, #EAF5FE 100%);
+    min-height: 100vh;
+    padding: 2rem;
+    font-family: 'Salesforce Sans', sans-serif;
+}
+
+.quiz-headline {
+    font-family: 'AvantGardeDemi', sans-serif;
+    font-size: 50pt; /* H2 Size [cite: 1451] */
+    line-height: 1.1; /* Standard 100% leading [cite: 1522] */
+    color: #001E5B; /* Electric Blue 15 [cite: 1087] */
+    margin-bottom: 1rem;
+}
+
+.hero-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Remove height: 100vh; and overflow: hidden; */
+    padding: 0; /* Let the :host padding handle the outer spacing */
+    width: 100%;
+}
+.hero-gif {
+    width: 90%;
+    max-width: 800px; /* Limits the "stupid large" scale */
+    height: auto;
+    border-radius: 24px; /* Matches the result card radius */
+    filter: drop-shadow(0 20px 40px rgba(0, 30, 91, 0.2)); /* Electric Blue 15 shadow */
+    transition: transform 0.3s ease;
+}
+
+.hero-gif:hover {
+    transform: scale(1.02); /* Subtle interactive lift */
+}
+
+.quiz-button {
+    width: 100%;
+    background-color: #FFFFFF;
+    border: 2px solid #066AFE; /* Electric Blue 50  */
+    padding: 1.5rem;
+    font-size: 14pt;
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.quiz-button:hover {
+    /* Secondary Palette Pop [cite: 1113, 1141] */
+    background-color: #04E1CB; /* Teal 80  */
+    border-color: #04E1CB;
+    transform: scale(1.03);
+}
+
+.quiz-button:active {
+    transform: scale(0.98);
+}
+
+
+
+.result-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.character-img-break {
+    max-height: 350px;
+    margin: -40px auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.character-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligns header and image to the left of their grid cell */
+    justify-content: center;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.character-img-break {
+    max-height: 300px; /* Constrained to prevent pushing the CTA off-screen */
+    width: auto;
+    margin: 1rem auto; /* Removed the negative -40px margin that caused the overlap */
+    display: block;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    z-index: 5;
+    transition: transform 0.3s ease;
+}
+
+/* Immersion Animation for the Result Page [cite: 1128, 1184] */
+.animate-gradient {
+    background: linear-gradient(-45deg, #001E5B, #022AC0, #066AFE, #00B3FF);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    border-radius: 24px;
+    padding: 2rem; /* Consistent internal padding */
+    width: 100%;
+    max-width: 1100px; /* Limits width to match hero-container logic */
+    min-height: 80vh; /* Provides height without forcing a scrollbar on small screens */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+.animate-gradient.result-card {
+    background: linear-gradient(-45deg, #001E5B, #022AC0, #066AFE, #00B3FF);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    border-radius: 24px; /* Matches launch page hero */
+    padding: 3rem 2rem;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFFFFF;
+    box-shadow: 0 20px 50px rgba(0, 30, 91, 0.3);
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Result Typography [cite: 1449, 1465-1471] */
+.result-header {
+    font-family: 'AvantGardeDemi', sans-serif;
+    font-size: 42pt; /* Adjust size for impact */
+    line-height: 1;
+    margin-bottom: 0.5rem; /* Remove bottom margin to control spacing via the image */
+    color: #FFFFFF;
+    z-index: 1; /* Keeps text behind character if they overlap intentionally */
+}
+
+/* Character image overlap logic [cite: 1696-1697] */
+.character-img-break {
+    max-height: 280px; /* Restored size for better presence */
+    width: auto;
+    display: block;
+    margin: 1rem auto;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
+    z-index: 5; /* Ensure character is in front */
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+}
+
+.character-img-break:hover {
+    transform: scale(1.05); /* Interactive "fun" element [cite: 55] */
+}
+
+.result-body {
+    font-family: 'SalesforceSans', sans-serif;
+    font-size: 16pt;
+    max-width: 600px;
+    margin: 0 auto;
+        margin-bottom: 1.5rem;
+
+}
+
+/* Reset Button with Secondary Pop [cite: 1114, 1141] */
+.reset-btn {
+    background-color: #04E1CB; /* Teal 80 Pop */
+    border: none;
+    color: #001E5B; /* Electric Blue 15 for visibility [cite: 1335] */
+    font-weight: bold;
+    max-width: 250px;
+        padding: 1rem;
+    font-size: 14pt;
+}
+
+
+/* Primary Button - Teal 80 Pop [cite: 1118] */
+.primary-pop {
+    background-color: #04E1CB;
+    border: none;
+    color: #001E5B;
+    font-weight: bold;
+    font-size: 18pt;
+    padding: 1.5rem 4rem;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(4, 225, 203, 0.4);
+    transition: transform 0.2s;
+}
+
+.primary-pop:hover {
+    transform: scale(1.05);
+    background-color: #00B3FF; /* Cloud Blue 68 Transition [cite: 1079] */
+}
+
+/* Back Button - subtle Electric Blue 30 [cite: 1084] */
+.nav-btn-back {
+    background: none;
+    border: none;
+    color: #022AC0;
+    font-size: 14pt;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.qr-wrapper {
+    background: #FFFFFF;
+    padding: 1rem;
+    border-radius: 12px;
+    display: inline-block;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin-top: 1rem;
+}
+
+.qr-code {
+    width: 110px; /* Compact QR size */
+    height: 110px;
+}
+
+.cta-section {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.cta-text {
+    font-family: 'AvantGardeDemi', sans-serif;
+    font-size: 14pt;
+    margin-bottom: 0.5rem;
+}
+
+/* Logo Styling */
+.brand-logo-white {
+    height: 40px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 0.5rem;
+}
+
+.brand-logo-footer {
+    height: 60px; /* Controlled height */
+    width: auto;
+    margin: 2rem auto;
+    display: block;
+}
+
+/* Updated Typography for Contrast */
+.result-white-text {
+    color: #FFFFFF !important;
+    opacity: 0.9;
+}
+
+.cta-headline {
+    font-family: 'AvantGardeDemi', sans-serif;
+    font-size: 24pt;
+    color: #FFFFFF;
+    margin-top: 1.5rem;
+}
+
+.divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 2.5rem auto;
+    width: 60%;
+}
+
+/* Container Spacing */
+.result-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    min-height: 100vh; /* Changed from height: 100vh */
+    height: auto; 
+    overflow: hidden; /* This kills the scrollbar */
+}
+
+.result-page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* No fixed height here; let :host padding do the work */
+}
+
+.qr-wrapper {
+    background: #FFFFFF;
+    padding: 8px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.qr-code {
+    width: 140px;
+    height: 140px;
+    display: block;
+}
+
+.info-display {
+    text-align: left;
+    color: #FFFFFF;
+}
+
+/* Updated Back Button - Matches Quiz Button Style */
+.nav-btn-back {
+    background-color: transparent;
+    border: 2px solid #022AC0; /* Electric Blue 30 */
+    color: #022AC0;
+    padding: 0.8rem 2rem;
+    font-size: 14pt; /* Matches .quiz-button */
+    border-radius: 16px; /* Matches .quiz-button */
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Matches .quiz-button */
+    font-family: 'SalesforceSans', sans-serif;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.nav-btn-back:hover {
+    background-color: rgba(2, 42, 192, 0.1); /* Subtle blue tint on hover */
+    transform: scale(1.03); /* Interactive lift */
+}
