@@ -1,5 +1,13 @@
 # SFCharacterQuiz
-A simple character quiz to see which SF character you are. Created for a STEM Night at an elementary school
+A simple character quiz to see which SF character you are. Created for an elementary school STEM Night. 
+
+Deploy the LWC anywhere, or use it on a Visualforce page that's publicly accessible. 
+
+<img width="1341" height="741" alt="image" src="https://github.com/user-attachments/assets/e768ed6c-1c4b-4eeb-89ed-3bfbdd27c432" />
+
+<img width="1349" height="758" alt="image" src="https://github.com/user-attachments/assets/e77aa41f-2d2d-4838-ad45-2e1a6661822e" />
+
+
 
 ## Deploy
 
