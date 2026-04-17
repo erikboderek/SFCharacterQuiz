@@ -9,16 +9,21 @@ Click the button above to deploy this package directly to your Salesforce org.
 
 ## Package Contents
 
-This package contains **9** metadata components across **4** types.
+This package contains **10** metadata components across **5** types.
 
 | Metadata Type | Count |
 |--------------|-------|
+| ApexPage | 1 |
 | AuraDefinitionBundle | 1 |
 | DigitalExperience | 1 |
 | LightningComponentBundle | 1 |
 | StaticResource | 6 |
 
 ## Component Inventory
+
+### ApexPage
+
+- `CharacterQuizPage`
 
 ### AuraDefinitionBundle
 

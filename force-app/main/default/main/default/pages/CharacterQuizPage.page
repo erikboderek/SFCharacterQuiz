@@ -1,0 +1,20 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false" applyHtmlTag="true" applyBodyTag="false">
+    <head>
+        <script src="/lightning/lightning.out.js"></script>
+        <style>
+            body { 
+                margin: 0; 
+                /* Cloud Blue 95 background [cite: 1079] */
+                background-color: #EAF5FE; 
+            }
+        </style>
+    </head>
+    <body>
+        <div id="lightningOutContainer" />
+        <script>
+            $Lightning.use("c:quizApp", function() {
+                $Lightning.createComponent("c:characterQuiz", {}, "lightningOutContainer");
+            });
+        </script>
+    </body>
+</apex:page>
